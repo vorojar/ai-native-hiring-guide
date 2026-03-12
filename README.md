@@ -1,6 +1,10 @@
 # AI-Native 工程师招聘面试官手册
 
-专为 AI 驱动开发团队设计的面试官手册。
+[![Preview](preview.png)](https://vorojar.github.io/ai-native-hiring-guide/)
+
+**[在线查看 &rarr;](https://vorojar.github.io/ai-native-hiring-guide/)**&nbsp;&nbsp;单文件 HTML，零依赖，浏览器直接打开即用。
+
+---
 
 2026 年，程序员是机甲战士。我们不再招「会写代码的人」，而是招「会驾驶 AI agent 的人」。
 
@@ -8,9 +12,7 @@
 
 传统技术面试考的是候选人能不能写出正确代码。但当 AI 已经能写出比大多数人更好的代码时，面试该考什么？
 
-这份手册给出了一套完整的答案：
-
-- **两种岗位定义** — Builder（驱动产出）和 Reviewer（守住质量），覆盖 AI 时代工程师的两种核心角色
+- **两种岗位定义** — Builder（驱动产出）和 Reviewer（守住质量），加上双栖路径
 - **14 道结构化面试题** — 含初阶/高阶双版本，每题附评分标准（5/3/1 三档）
 - **AI 驾驶能力实操考核** — 现场观察候选人如何操控 AI agent，这是机甲战士的基本功
 - **面试官备用素材** — 方案摘要、代码 diff 等现成材料，非技术面试官也能直接使用
@@ -28,20 +30,6 @@
 3. **AI 驾驶能力** — 能否高效地与 AI agent 协作
 4. **产品直觉 / 系统思维** — 能否判断「该不该建」而非只关心「怎么建」
 5. **决策力** — 压力下能否给出清晰方向，不逃避
-
-## 使用方式
-
-单文件 HTML，无需安装任何依赖。
-
-```bash
-# 直接打开
-open index.html
-
-# 或者用任意 HTTP 服务器
-npx serve .
-```
-
-也可以直接访问在线版本：[vorojar.github.io/ai-native-hiring-guide](https://vorojar.github.io/ai-native-hiring-guide/)
 
 ## 面试流程（60 分钟）
 
@@ -61,6 +49,16 @@ npx serve .
 - **PASS** — >= 35 分（70%）且无否决项
 - **HOLD** — 30-34 分，列为备选
 - **FAIL** — < 30 分，或触发任一否决项
+
+## 本地使用
+
+```bash
+# 直接打开
+open index.html
+
+# 或者用任意 HTTP 服务器
+npx serve .
+```
 
 ## 关于
 
