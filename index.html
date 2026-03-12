@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Native 工程师招聘手册 · 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #2A2015;
+    --ink-soft: #3D342A;
+    --ink-muted: #8A7D70;
+    --primary: #C4552A;
+    --primary-light: #FDF0EA;
+    --teal: #5A7F5C;
+    --teal-light: #EDF4EE;
+    --amber: #B8862D;
+    --amber-light: #FBF3E0;
+    --red: #A63D3D;
+    --red-light: #FBEDEC;
+    --border: #D9D0C5;
+    --bg: #F7F4F0;
+    --white: #FFFFFF;
+    --surface: #FFFFFF;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Noto Sans SC', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--sans);
+    background: linear-gradient(180deg, var(--bg) 0%, #F2EDE6 100%);
+    background-attachment: fixed;
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; font-size: 12px; }
+    .no-print { display: none; }
+    .section { page-break-inside: avoid; }
+    .page-break { page-break-before: always; }
+    header { page-break-after: avoid; }
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #2A2015 0%, #3A2E20 50%, #2A2015 100%);
+    color: white;
+    padding: 56px 0 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(196,85,42,0.12);
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 20%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(212,164,76,0.08);
+  }
+
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #D4A44C;
+    background: rgba(212,164,76,0.12);
+    border: 1px solid rgba(212,164,76,0.3);
+    border-radius: 20px;
+    padding: 4px 12px;
+    margin-bottom: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  .header-badge::before {
+    content: '●';
+    font-size: 8px;
+    color: #6B9E5F;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  h1 {
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  h1 span { color: #D4A44C; }
+
+  .header-sub {
+    font-size: 15px;
+    color: #A89B8C;
+    margin-bottom: 28px;
+  }
+
+  .header-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .htag {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid;
+  }
+
+  .htag-builder { color: var(--teal); border-color: var(--teal); background: rgba(90,127,92,0.08); }
+  .htag-reviewer { color: var(--primary); border-color: var(--primary); background: rgba(196,85,42,0.08); }
+  .htag-both { color: #A0785A; border-color: #A0785A; background: rgba(160,120,90,0.08); }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 8px rgba(42,32,21,0.06);
+  }
+
+  .nav-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  nav a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-muted);
+    text-decoration: none;
+    padding: 12px 16px;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+  }
+
+  nav a:hover {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 32px 80px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+
+  .section-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+  }
+
+  .icon-blue { background: var(--primary-light); color: var(--primary); }
+  .icon-teal { background: var(--teal-light); color: var(--teal); }
+  .icon-amber { background: var(--amber-light); color: var(--amber); }
+  .icon-red { background: var(--red-light); color: var(--red); }
+
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .section-title small {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-muted);
+    margin-top: 2px;
+  }
+
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 24px 0 12px;
+    color: var(--ink-soft);
+  }
+
+  h3 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 20px 0 8px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    transition: box-shadow 0.2s;
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 16px rgba(42,32,21,0.06);
+  }
+
+  .card-body { padding: 16px 20px; }
+
+  /* ── ROLE CARDS ── */
+  .role-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+
+  @media (max-width: 600px) {
+    .role-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 28px; }
+    main { padding: 24px 16px 60px; }
+    .header-inner { padding: 0 20px; }
+  }
+
+  .role-card {
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid transparent;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .role-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(42,32,21,0.12);
+  }
+
+  .role-card.builder {
+    background: linear-gradient(135deg, #5A7F5C 0%, #4A6B4C 100%);
+    color: white;
+  }
+
+  .role-card.reviewer {
+    background: linear-gradient(135deg, #C4552A 0%, #A34420 100%);
+    color: white;
+  }
+
+  .role-card h2 {
+    color: white;
+    font-size: 20px;
+    margin: 8px 0 4px;
+  }
+
+  .role-sub {
+    font-size: 12px;
+    opacity: 0.75;
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+
+  .role-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .role-card li {
+    font-size: 13px;
+    opacity: 0.9;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .role-card li::before {
+    content: '→';
+    opacity: 0.6;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── INFO BOXES ── */
+  .info-box {
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .info-box .ib-icon { font-family: var(--mono); font-size: 14px; font-weight: 700; flex-shrink: 0; margin-top: 1px; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
+  .info-box .ib-content { flex: 1; }
+  .info-box .ib-title { font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+  .info-box p { font-size: 13px; line-height: 1.6; }
+
+  .info-blue { background: var(--primary-light); border: 1px solid #F0D4C5; color: #A3421F; }
+  .info-blue .ib-icon { background: rgba(196,85,42,0.12); }
+  .info-teal { background: var(--teal-light); border: 1px solid #C5DBC7; color: #4A6B4C; }
+  .info-teal .ib-icon { background: rgba(90,127,92,0.12); }
+  .info-amber { background: var(--amber-light); border: 1px solid #E8C96B; color: #7A5A20; }
+  .info-amber .ib-icon { background: rgba(184,134,45,0.12); }
+  .info-red { background: var(--red-light); border: 1px solid #E8C5C5; color: #8B3030; }
+  .info-red .ib-icon { background: rgba(166,61,61,0.12); }
+
+  /* ── FLOW STEPS ── */
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .flow-step {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .flow-step:last-child { border-bottom: none; }
+
+  .flow-time {
+    background: var(--ink);
+    color: white;
+    padding: 14px 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 0.03em;
+  }
+
+  .flow-content {
+    padding: 14px 18px;
+    background: var(--surface);
+    transition: background 0.15s;
+  }
+
+  .flow-step:hover .flow-content {
+    background: var(--bg);
+  }
+
+  .flow-content strong {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin-bottom: 3px;
+  }
+
+  .flow-content span {
+    font-size: 12px;
+    color: var(--ink-muted);
+  }
+
+  /* ── QUESTION CARDS ── */
+  .q-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    transition: box-shadow 0.2s;
+  }
+
+  .q-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 18px;
+    color: white;
+  }
+
+  .q-header.teal { background: var(--teal); }
+  .q-header.blue { background: var(--primary); }
+  .q-header.purple { background: #7A4058; }
+
+  .q-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 2px 8px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .q-title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .q-level {
+    font-size: 10px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 2px 8px;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .q-hint {
+    padding: 10px 18px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--ink-muted);
+    font-style: italic;
+  }
+
+  .q-hint strong { color: var(--ink-soft); font-style: normal; }
+
+  .q-scoring { padding: 4px 0; }
+
+  /* ── SCORE TABLE ── */
+  .score-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .score-table th {
+    background: var(--ink-soft);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  .score-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .score-table tr:last-child td { border-bottom: none; }
+  .score-table tr:nth-child(odd) td { background: var(--bg); }
+  .score-table tr:nth-child(even) td { background: var(--surface); }
+
+  .score-badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  .score-5 { background: #DFF0E0; color: #3A5E3C; }
+  .score-3 { background: var(--amber-light); color: #7A5A20; }
+  .score-1 { background: var(--red-light); color: var(--red); }
+
+  /* ── VETO ITEMS ── */
+  .veto-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid #E8C5C5;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .veto-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 18px;
+    background: var(--red-light);
+    border-bottom: 1px solid #E8C5C5;
+  }
+
+  .veto-item:last-child { border-bottom: none; }
+
+  .veto-x {
+    width: 22px; height: 22px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .veto-text { font-size: 13px; line-height: 1.6; }
+  .veto-text strong { color: var(--red); display: block; margin-bottom: 2px; }
+
+  /* ── WEIGHT TABLE ── */
+  .weight-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .weight-table th {
+    padding: 11px 16px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .weight-table th:first-child { background: var(--ink); }
+  .weight-table th.th-builder { background: var(--teal); }
+  .weight-table th.th-reviewer { background: var(--primary); }
+  .weight-table th.th-score { background: var(--ink-soft); }
+
+  .weight-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+
+  .weight-table tr:last-child td { border-bottom: none; font-weight: 700; }
+  .weight-table tr:nth-child(odd) td { background: var(--bg); }
+  .weight-table tr:nth-child(even) td { background: var(--surface); }
+
+  .pct-bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .pct-bar { height: 6px; border-radius: 3px; flex: 1; background: var(--border); overflow: hidden; }
+  .pct-fill-builder { background: var(--teal); height: 100%; border-radius: 3px; }
+  .pct-fill-reviewer { background: var(--primary); height: 100%; border-radius: 3px; }
+  .pct-label { font-family: var(--mono); font-size: 11px; color: var(--ink-muted); white-space: nowrap; }
+
+  /* ── VERDICT CARDS ── */
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  @media (max-width: 600px) {
+    .verdict-grid { grid-template-columns: 1fr; }
+  }
+
+  .verdict-card {
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+    border: 1px solid;
+  }
+
+  .verdict-pass { background: #DFF0E0; border-color: #8DC08F; color: #3A5E3C; }
+  .verdict-hold { background: var(--amber-light); border-color: #E8C96B; color: #7A5A20; }
+  .verdict-fail { background: var(--red-light); border-color: #E8C5C5; color: var(--red); }
+
+  .verdict-card {
+    transition: transform 0.15s;
+  }
+
+  .verdict-card:hover {
+    transform: translateY(-2px);
+  }
+
+  .verdict-card .v-icon { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; display: inline-block; padding: 4px 12px; border-radius: 4px; }
+  .verdict-pass .v-icon { background: rgba(90,127,92,0.15); }
+  .verdict-hold .v-icon { background: rgba(184,134,45,0.15); }
+  .verdict-fail .v-icon { background: rgba(166,61,61,0.15); }
+  .verdict-card .v-title { font-size: 18px; font-weight: 900; margin-bottom: 4px; }
+  .verdict-card .v-sub { font-size: 11px; font-family: var(--mono); opacity: 0.75; }
+
+  /* ── SCORE FORM ── */
+  .score-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .form-header {
+    background: var(--ink);
+    color: white;
+    padding: 16px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .form-header { grid-template-columns: 1fr; }
+  }
+
+  .form-field label {
+    display: block;
+    font-size: 10px;
+    color: #A89B8C;
+    font-family: var(--mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .form-field input, .form-field select {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 8px 12px;
+    color: white;
+    font-family: var(--sans);
+    font-size: 13px;
+    outline: none;
+  }
+
+  .form-field input:focus, .form-field select:focus {
+    border-color: #D4A44C;
+  }
+
+  .form-field select option { color: var(--ink); background: white; }
+
+  .score-rows {
+    border-top: 1px solid var(--border);
+  }
+
+  .score-row {
+    display: grid;
+    grid-template-columns: 1fr 80px 80px 120px;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+  }
+
+  .score-row:last-child { border-bottom: none; }
+
+  .score-row.header-row {
+    background: var(--bg);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .score-row.total-row {
+    background: var(--primary-light);
+    font-weight: 700;
+  }
+
+  .sr-module { padding: 12px 16px; font-size: 13px; }
+  .sr-max { padding: 12px 8px; font-family: var(--mono); font-size: 12px; color: var(--ink-muted); text-align: center; }
+
+  .sr-score {
+    padding: 8px;
+    text-align: center;
+  }
+
+  .sr-score input {
+    width: 56px;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 4px;
+    font-family: var(--mono);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    outline: none;
+    background: var(--bg);
+  }
+
+  .sr-score input:focus { border-color: var(--primary); background: white; }
+
+  .sr-notes { padding: 8px; }
+  .sr-notes input {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--ink);
+    outline: none;
+    background: var(--bg);
+  }
+
+  .sr-notes input:focus { border-color: var(--primary); background: white; }
+
+  .total-display {
+    padding: 16px 24px;
+    background: var(--ink);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .total-label { font-size: 14px; font-weight: 600; }
+  .total-score {
+    font-family: var(--mono);
+    font-size: 36px;
+    font-weight: 700;
+    color: #D4A44C;
+  }
+
+  .total-score span { font-size: 16px; color: #A89B8C; }
+
+  /* ── VETO FORM ── */
+  .veto-checks {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 12px 0;
+  }
+
+  .veto-check {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    transition: background 0.15s;
+  }
+
+  .veto-check:last-child { border-bottom: none; }
+  .veto-check:hover { background: var(--bg); }
+
+  .veto-check label { flex: 1; font-size: 13px; cursor: pointer; }
+
+  .veto-check input[type="checkbox"] {
+    width: 18px; height: 18px;
+    accent-color: var(--red);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .veto-triggered {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--red);
+    font-weight: 700;
+    display: none;
+  }
+
+  .veto-check input:checked ~ .veto-triggered { display: inline; }
+
+  /* ── CONCLUSION AREA ── */
+  .conclusion-area {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 16px;
+  }
+
+  .conclusion-header {
+    background: var(--bg);
+    padding: 12px 18px;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .conclusion-body { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+
+  .radio-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .radio-option:hover { border-color: var(--ink-muted); }
+  .radio-option input { display: none; }
+
+  .radio-option.pass { color: #3A5E3C; }
+  .radio-option.hold { color: #7A5A20; }
+  .radio-option.fail { color: var(--red); }
+
+  .radio-option input:checked + span { font-weight: 900; }
+  .radio-option:has(input:checked).pass { border-color: #5A7F5C; background: #DFF0E0; }
+  .radio-option:has(input:checked).hold { border-color: var(--amber); background: var(--amber-light); }
+  .radio-option:has(input:checked).fail { border-color: var(--red); background: var(--red-light); }
+
+  .reason-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .reason-field label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .reason-field textarea {
+    width: 100%;
+    min-height: 80px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink);
+    resize: vertical;
+    outline: none;
+    background: var(--bg);
+    line-height: 1.6;
+  }
+
+  .reason-field textarea:focus { border-color: var(--primary); background: white; }
+
+  /* ── PRINT BUTTON ── */
+  .print-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s;
+    margin-top: 8px;
+  }
+
+  .print-btn:hover { background: #A34420; }
+
+  /* ── QUICK JUDGE TABLE ── */
+  .quick-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .quick-table th {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .quick-table th:first-child { background: var(--ink); color: white; }
+  .quick-table th.th-b { background: var(--teal); color: white; }
+  .quick-table th.th-r { background: var(--primary); color: white; }
+  .quick-table th.th-x { background: var(--red); color: white; }
+
+  .quick-table td {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .quick-table tr:last-child td { border-bottom: none; }
+  .quick-table tr:nth-child(odd) td { background: var(--bg); }
+  .quick-table tr:nth-child(even) td { background: var(--surface); }
+
+  /* ── CHANGE ITEMS ── */
+  .change-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .change-item {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .change-item:last-child { border-bottom: none; }
+
+  .change-key {
+    padding: 14px 16px;
+    background: var(--bg);
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--primary);
+    border-right: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+  }
+
+  .change-val {
+    padding: 14px 18px;
+    font-size: 13px;
+    line-height: 1.6;
+    background: var(--surface);
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    background: var(--surface);
+    transition: background 0.15s;
+  }
+
+  .check-item:last-child { border-bottom: none; }
+  .check-item:hover { background: var(--bg); }
+  .check-item input[type="checkbox"] { accent-color: var(--primary); width: 16px; height: 16px; cursor: pointer; flex-shrink: 0; }
+  .check-item label { cursor: pointer; flex: 1; }
+
+  /* ── DIVIDER ── */
+  .page-break-hint {
+    border: none;
+    border-top: 2px dashed var(--border);
+    margin: 40px 0;
+    position: relative;
+  }
+
+  .page-break-hint::after {
+    content: '· · ·';
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg);
+    padding: 0 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--border);
+    letter-spacing: 0.2em;
+  }
+
+  .q-card:hover {
+    box-shadow: 0 4px 16px rgba(42,32,21,0.06);
+  }
+
+  .change-item:hover .change-val {
+    background: var(--bg);
+  }
+
+  .change-val {
+    transition: background 0.15s;
+  }
+
+  @media (max-width: 700px) {
+    .flow-step { grid-template-columns: 90px 1fr; }
+    .change-item { grid-template-columns: 1fr; }
+    .change-key { border-right: none; border-bottom: 1px solid var(--border); }
+    .score-row { grid-template-columns: 1fr 60px 60px; }
+    .sr-notes { grid-column: 1 / -1; }
+    .quick-table, .weight-table { display: block; overflow-x: auto; }
+  }
+
+  /* ── SAMPLE MATERIAL ── */
+  .sample-block {
+    background: var(--ink);
+    color: #C8BEB2;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 12px 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.8;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .sample-block .hl { color: #D4A44C; }
+  .sample-block .err { color: #E07070; }
+  .sample-block .cm { color: #7A6E62; }
+  .sample-block .kw { color: #6B9E5F; }
+
+  .sample-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 12px 0 4px;
+  }
+
+  .sr-label {
+    font-size: 10px;
+    font-family: var(--mono);
+    color: var(--ink-muted);
+    letter-spacing: 0.03em;
+    margin-left: 4px;
+  }
+
+  @media (max-width: 500px) {
+    .flow-step { grid-template-columns: 1fr; }
+    .flow-time { padding: 8px 16px; justify-content: flex-start; }
+    .verdict-grid { grid-template-columns: 1fr; }
+    .form-header { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-badge">EHAFO · AI-NATIVE HIRING · 2026</div>
+    <h1>AI-Native 工程师<br><span>招聘面试官手册</span></h1>
+    <p class="header-sub">专为 AI 驱动开发团队设计 · 覆盖初阶 / 高阶双套评分标准 · 非技术面试官也能快速上手</p>
+    <div class="header-tags">
+      <span class="htag htag-builder">Builder 型</span>
+      <span class="htag htag-reviewer">Reviewer 型</span>
+      <span class="htag htag-both">通用题库</span>
+      <span class="htag htag-both">评分记录表</span>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="no-print">
+  <div class="nav-inner">
+    <a href="#flow">开发模式</a>
+    <a href="#roles">岗位定义</a>
+    <a href="#process">面试流程</a>
+    <a href="#common">通用题库</a>
+    <a href="#builder">Builder 题库</a>
+    <a href="#reviewer">Reviewer 题库</a>
+    <a href="#veto">否决 & 评分</a>
+    <a href="#scoresheet">评分记录表</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ── SECTION 1: 开发模式 ── -->
+<div class="section" id="flow">
+  <div class="section-header">
+    <div class="section-icon icon-blue">01</div>
+    <div class="section-title">我们的开发模式
+      <small>面试官必读背景，解释为什么要这样考察</small>
+    </div>
+  </div>
+
+  <div class="info-box info-blue">
+    <div class="ib-icon">&rarr;</div>
+    <div class="ib-content">
+      <div class="ib-title">核心开发流程</div>
+      <p>提交 Issues → Claude Code 审核确认 → 自动建分支 / askuser 补充 → 人类确认方案 → Claude Code 写代码 → PR 由 Claude Code Review → 人工最终审查合并</p>
+    </div>
+  </div>
+
+  <h2>这意味着什么变了？</h2>
+
+  <div class="change-list">
+    <div class="change-item">
+      <div class="change-key">PRD 没死</div>
+      <div class="change-val">顺序变了：先出原型，再配文档说明意图。不再是「需求 → 设计稿 → 代码」。</div>
+    </div>
+    <div class="change-item">
+      <div class="change-key">前后端分工淡化</div>
+      <div class="change-val">通才比以前更值钱。一个能同时做 PM + 设计 + 写代码的人，比三人团队还快。</div>
+    </div>
+    <div class="change-item">
+      <div class="change-key">沟通是最大瓶颈</div>
+      <div class="change-val">Issues 写得好不好，直接决定 AI 能走多远。写模糊 Issues 的人会拖慢整个团队。</div>
+    </div>
+    <div class="change-item">
+      <div class="change-key">人类价值转移</div>
+      <div class="change-val">从「写代码」转为「提出正确问题」和「做好 Review」。会写代码不再是核心门槛。</div>
+    </div>
+    <div class="change-item">
+      <div class="change-key">系统思维是瓶颈</div>
+      <div class="change-val">会用 AI 写代码很容易，但知道该建什么、怎么建、建出来对不对——这才是稀缺能力。</div>
+    </div>
+  </div>
+
+  <div class="info-box info-amber" style="margin-top:16px">
+    <div class="ib-icon">!</div>
+    <div class="ib-content">
+      <div class="ib-title">中间地带消失</div>
+      <p>传统「只写代码」的执行型程序员，在这套流程里越来越没有位置。候选人要么是 Builder，要么是 Reviewer，两者都不是的，不录用。</p>
+    </div>
+  </div>
+</div>
+
+<hr class="page-break-hint">
+
+<!-- ── SECTION 2: 岗位定义 ── -->
+<div class="section" id="roles">
+  <div class="section-header">
+    <div class="section-icon icon-teal">02</div>
+    <div class="section-title">两种岗位定义
+      <small>面试开始前必须先判断候选人属于哪一型</small>
+    </div>
+  </div>
+
+  <div class="role-grid">
+    <div class="role-card builder">
+      <h2>Builder 型</h2>
+      <div class="role-sub">产品直觉 + 驱动 AI + 基本设计感</div>
+      <ul>
+        <li>写高质量 Issues，驱动 AI 完成工作</li>
+        <li>快速出原型，验证方向而非等待确认</li>
+        <li>跨角色作战：PM + 设计 + 开发</li>
+        <li>从用户视角关注业务价值</li>
+        <li>不需要授权就能推动事情发生</li>
+      </ul>
+    </div>
+    <div class="role-card reviewer">
+      <h2>Reviewer 型</h2>
+      <div class="role-sub">极强系统思维 + 极快评审速度</div>
+      <ul>
+        <li>快速识别 AI 代码的风险与缺陷</li>
+        <li>给出 AI 能直接执行的修改指令</li>
+        <li>把握整体架构方向，不让系统跑偏</li>
+        <li>高压下快速做取舍决策，不逃避</li>
+        <li>能从单次 Review 上升到流程优化</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="info-box info-amber" style="margin-top:16px">
+    <div class="ib-icon">+</div>
+    <div class="ib-content">
+      <div class="ib-title">双栖候选人</div>
+      <p>如果破冰阶段无法判断候选人属于哪一型，或者候选人明显兼具两种特质，不必强行归类。走「双栖路径」：通用模块正常考，专项模块从 Builder 和 Reviewer 各抽一道核心题（推荐 Q5 + Q9），最后根据得分分布决定更适合哪个方向。强行归类不如让表现说话。</p>
+    </div>
+  </div>
+</div>
+
+<hr class="page-break-hint">
+
+<!-- ── SECTION 3: 面试流程 ── -->
+<div class="section" id="process">
+  <div class="section-header">
+    <div class="section-icon icon-blue">03</div>
+    <div class="section-title">面试流程 & 快速判断
+      <small>标准 60 分钟面试的时间分配</small>
+    </div>
+  </div>
+
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="flow-time">00 – 05 min</div>
+      <div class="flow-content">
+        <strong>破冰 & 定型</strong>
+        <span>问候选人最近在用哪些 AI 工具、最近做了什么有成就感的东西。同时判断 Builder / Reviewer / 双栖倾向。</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-time">05 – 20 min</div>
+      <div class="flow-content">
+        <strong>通用模块 A+B — Issues & Review</strong>
+        <span>所有候选人必考。Issue 质量题 + 方案 Review 题各一道，初阶选基础版，高阶选进阶版。</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-time">20 – 30 min</div>
+      <div class="flow-content">
+        <strong>通用模块 G — AI 驾驶实操</strong>
+        <span>所有候选人必考。让候选人现场使用 AI 编程工具完成一个小任务，观察他怎么驾驶 agent。这是机甲战士的基本功测试。</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-time">30 – 45 min</div>
+      <div class="flow-content">
+        <strong>专项模块</strong>
+        <span>Builder：产品直觉题 + 原型实操题 ｜ Reviewer：PR Review 实操 + 系统决策题 ｜ 双栖：各抽一道核心题</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-time">45 – 55 min</div>
+      <div class="flow-content">
+        <strong>候选人提问 & 开放讨论</strong>
+        <span>这是最能暴露思维层次的环节。观察他问的是「自己的待遇」还是「团队的问题」。可结合系统思维做开放讨论。</span>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-time">55 – 60 min</div>
+      <div class="flow-content">
+        <strong>当场评分</strong>
+        <span>按评分表填写，30分钟内提交结论，避免记忆衰退影响准确性。</span>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="margin-top:24px">5 分钟快速判断法（面试开始时用）</h2>
+
+  <table class="quick-table">
+    <thead>
+      <tr>
+        <th>问题</th>
+        <th class="th-b">Builder 信号 ✓</th>
+        <th class="th-r">Reviewer 信号 ✓</th>
+        <th class="th-x">淘汰信号 ✕</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>你最近用 AI 做了什么？</strong></td>
+        <td>给出具体案例，有产出物</td>
+        <td>描述如何发现 AI 的错误并修正</td>
+        <td>「有用 ChatGPT 查过东西」</td>
+      </tr>
+      <tr>
+        <td><strong>最近有什么没做成的事？</strong></td>
+        <td>能分析失败原因，愿意复盘</td>
+        <td>能找到系统性问题所在</td>
+        <td>推卸责任，或无法举例</td>
+      </tr>
+      <tr>
+        <td><strong>如果接手新项目，第一步？</strong></td>
+        <td>先出原型 / 了解用户痛点</td>
+        <td>先看现有架构和代码质量</td>
+        <td>「等 PM 给需求」</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="page-break-hint">
+
+<!-- ── SECTION 4: 通用题库 ── -->
+<div class="section" id="common">
+  <div class="section-header">
+    <div class="section-icon icon-blue">04</div>
+    <div class="section-title">通用题库
+      <small>所有候选人必考，无论 Builder 还是 Reviewer</small>
+    </div>
+  </div>
+
+  <h2>模块 A · Issues 写作质量</h2>
+
+  <h3>初阶候选人</h3>
+  <div class="q-card">
+    <div class="q-header teal">
+      <span class="q-num">Q1</span>
+      <span class="q-title">请用5分钟写一个 Issue：我们的搜索结果不准，用户反馈很多。</span>
+      <span class="q-level">初阶</span>
+    </div>
+    <div class="q-hint"><strong>考察重点：</strong>能否提供可操作信息（复现路径、预期行为、边界条件）；Claude Code 是否能直接处理这个 Issue</div>
+    <div class="q-scoring">
+      <table class="score-table">
+        <thead><tr><th style="width:80px">评分</th><th>标准</th></tr></thead>
+        <tbody>
+          <tr><td><span class="score-badge score-5">5 分</span></td><td>背景清晰 + 复现路径完整 + 预期行为明确 + 边界条件已列出，Claude Code 可以直接开始处理</td></tr>
+          <tr><td><span class="score-badge score-3">3 分</span></td><td>描述清楚，但缺少复现细节或边界条件，AI 需要追问才能继续</td></tr>
+          <tr><td><span class="score-badge score-1">1 分</span></td><td>模糊描述，如「搜索有问题，请修复」，AI 无法直接行动</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3>高阶候选人</h3>
+  <div class="q-card">
+    <div class="q-header blue">
+      <span class="q-num">Q2</span>
+      <span class="q-title">你提交了一个 Issue，Claude Code 回来 askuser 补充了3个问题。这说明你的 Issue 哪里有问题？你会怎么改写？</span>
+      <span class="q-level">高阶</span>
+    </div>
+    <div class="q-hint"><strong>考察重点：</strong>自我迭代能力；能否识别 Issue 模糊性的根本原因，而非把 askuser 视为正常现象</div>
+    <div class="q-scoring">
+      <table class="score-table">
+        <thead><tr><th style="width:80px">评分</th><th>标准</th></tr></thead>
+        <tbody>
+          <tr><td><span class="score-badge score-5">5 分</span></td><td>能准确指出 Issue 缺少的信息类型（上下文 / 约束 / 优先级），并给出改写版本</td></tr>
+          <tr><td><span class="score-badge score-3">3 分</span></td><td>能反思问题，但改写版本仍有遗漏，或只能改写不能说明原因</td></tr>
+          <tr><td><span class="score-badge score-1">1 分</span></td><td>认为 askuser 是正常的，不觉得是 Issue 的问题，缺乏主动优化意识</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2>模块 B · 方案 Review 能力</h2>
+
+  <h3>初阶候选人</h3>
+  <div class="q-card">
+    <div class="q-header teal">
+      <span class="q-num">Q3</span>
+      <span class="q-title">（给候选人看一段 AI 生成的方案摘要）这个方案你会通过吗？有什么顾虑？</span>
+      <span class="q-level">初阶</span>
+    </div>
+    <div class="q-hint"><strong>考察重点：</strong>能否在5分钟内给出有效结论；是否有基本的风险意识和决策能力</div>
+    <div class="q-scoring">
+      <table class="score-table">
+        <thead><tr><th style="width:100px">评分维度</th><th style="width:60px">满分</th><th>考察点</th></tr></thead>
+        <tbody>
+          <tr><td>速度</td><td>2 分</td><td>5分钟内能否得出有效结论，不拖延</td></tr>
+          <tr><td>风险识别</td><td>3 分</td><td>安全 / 性能 / 边界问题有没有看出来</td></tr>
+          <tr><td>决策清晰度</td><td>2 分</td><td>给的是明确指令还是模糊的「感觉」</td></tr>
+          <tr><td>边界感</td><td>3 分</td><td>知不知道哪些自己判断不了、需要升级决策</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sample-tag">面试官备用素材 — 展示给候选人看</div>
+  <div class="sample-block"><span class="hl">需求:</span> 用户反馈搜索结果不准确，经常搜不到想要的商品
+
+<span class="hl">AI 生成方案摘要:</span>
+<span class="kw">1.</span> 将现有 MySQL LIKE 模糊查询迁移到 Elasticsearch
+<span class="kw">2.</span> 接入 IK 中文分词器，支持同义词和拼音搜索
+<span class="kw">3.</span> 热门搜索词用 Redis 缓存，TTL 设为 5 分钟
+<span class="kw">4.</span> 新增 /api/v2/search 接口，旧接口保留不动
+<span class="kw">5.</span> 前端搜索组件增加「猜你想搜」下拉提示
+<span class="kw">6.</span> 预计改动 14 个文件，新增约 1,200 行代码
+<span class="kw">7.</span> 开发周期：3 天
+
+<span class="cm">// 候选人应该能发现的问题（面试官参考，不要展示）:</span>
+<span class="cm">// - 数据同步策略缺失（MySQL → ES 如何同步？增量还是全量？）</span>
+<span class="cm">// - 3天引入全新基础设施(ES)不现实，缺少部署/运维方案</span>
+<span class="cm">// - 缓存失效策略：商品数据变更后缓存如何清理？</span>
+<span class="cm">// - 没有定义「准确」的衡量标准，无法验证方案是否成功</span>
+<span class="cm">// - 没有回滚方案：ES 挂了怎么办？</span>
+<span class="cm">// - 旧接口保留 = 双倍维护成本，没有下线计划</span></div>
+
+  <h3>高阶候选人</h3>
+  <div class="q-card">
+    <div class="q-header blue">
+      <span class="q-num">Q4</span>
+      <span class="q-title">Claude Code 的方案你看了觉得有问题，但说不清哪里不对，就是感觉不对。你怎么处理？</span>
+      <span class="q-level">高阶</span>
+    </div>
+    <div class="q-hint"><strong>考察重点：</strong>直觉与严谨的平衡；不确定时的行动策略；能否把「感觉」转化为可验证的假设</div>
+    <div class="q-scoring">
+      <table class="score-table">
+        <thead><tr><th style="width:80px">评分</th><th>标准</th></tr></thead>
+        <tbody>
+          <tr><td><span class="score-badge score-5">5 分</span></td><td>能把「感觉不对」拆解成可验证的假设，并设计验证步骤，不会因此卡住整个流程</td></tr>
+          <tr><td><span class="score-badge score-3">3 分</span></td><td>会寻求他人意见，但缺乏系统性的验证方法</td></tr>
+          <tr><td><span class="score-badge score-1">1 分</span></td><td>要么盲目通过，要么完全卡住不决策，两种极端都是问题</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <h2>模块 G · AI 驾驶能力</h2>
+
+  <div class="info-box info-amber" style="margin-bottom:12px">
+    <div class="ib-icon">!</div>
+    <div class="ib-content">
+      <div class="ib-title">这是机甲战士的基本功</div>
+      <p>其他能力再强，不会驾驭 AI agent 就无法在我们的流程里创造价值。这个模块考的不是「会不会用 ChatGPT」，而是能否把 AI 当成高效的协作搭档来驾驶。</p>
+    </div>
+  </div>
+
+  <h3>初阶候选人</h3>
+  <div class="q-card">
+    <div class="q-header teal">
+      <span class="q-num">Q13</span>
+      <span class="q-title">现场演示：这里有一个小需求（见下方素材）。请打开你常用的 AI 编程工具，用 10 分钟完成它。我们不评判最终代码质量，只看你怎么跟 AI 协作。</span>
+      <span class="q-level">初阶</span>
+    </div>
+    <div class="q-hint"><strong>考察重点：</strong>prompt 质量、上下文管理、验收习惯、出错时的应对策略。看的是「驾驶姿势」，不是「目的地」</div>
+    <div class="q-scoring">
+      <table class="score-table">
+        <thead><tr><th style="width:80px">评分</th><th>标准</th></tr></thead>
+        <tbody>
+          <tr><td><span class="score-badge score-5">5 分</span></td><td>指令清晰分步、主动提供约束和上下文、每步验收产出再继续、遇到问题能快速调整策略而非反复重试同一个 prompt</td></tr>
+          <tr><td><span class="score-badge score-3">3 分</span></td><td>能用 AI 完成任务，但 prompt 模糊需要多轮修正，或直接接受产出不验收</td></tr>
+          <tr><td><span class="score-badge score-1">1 分</span></td><td>把 AI 当搜索引擎用、复制粘贴式交互、完全不验收产出质量、不会调整策略</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sample-tag">Q13 备用需求卡片 — 面试官可替换为团队实际业务需求</div>
+  <div class="sample-block"><span class="hl">需求:</span> 写一个命令行工具，输入一个 GitHub 仓库的 URL，输出这个仓库最近 10 次提交的：
+  - 提交者
+  - 提交时间
+  - commit message 的第一行
+
+<span class="hl">约束:</span> 用你最熟悉的语言，可以调用 GitHub API（不需要认证的公开仓库即可）
+
+<span class="cm">// 面试官关注点（不展示给候选人）:</span>
+<span class="cm">// 1. 候选人是一上来就让 AI「写一个工具」，还是先分步拆解？</span>
+<span class="cm">// 2. 有没有告诉 AI 用什么语言、错误处理要求、输出格式？</span>
+<span class="cm">// 3. AI 生成代码后，候选人是直接跑还是先读一遍？</span>
+<span class="cm">// 4. 遇到报错，候选人是把报错信息直接丢给 AI 还是自己先分析？</span>
+<span class="cm">// 5. 最终产出能不能跑通不重要，驾驶过程才重要</span></div>
+
+  <h3>高阶候选人</h3>
+  <div class="q-card">
+    <div class="q-header blue">
+      <span class="q-num">Q14</span>
+      <span class="q-title">AI 生成了一段能跑通所有测试的代码，但你读了之后完全看不懂它的实现思路。你会直接合并吗？你的判断标准是什么？</span>
+      <span class="q-level">高阶</span>
+    </div>
+    <div class="q-hint"><strong>考察重点：</strong>对「能跑」和「可维护」的区分；是否有让 AI 解释自身产出的意识；对 agent 输出的信任边界</div>
+    <div class="q-scoring">
+      <table class="score-table">
+        <thead><tr><th style="width:80px">评分</th><th>标准</th></tr></thead>
+        <tbody>
+          <tr><td><span class="score-badge score-5">5 分</span></td><td>明确区分「能用」和「能维护」，会要求 AI 添加注释或重构为可读版本，指出「看不懂本身就是不合格」，给出具体改写指令</td></tr>
+          <tr><td><span class="score-badge score-3">3 分</span></td><td>倾向拒绝或要求解释，但说不清「可维护性」的具体标准是什么</td></tr>
+          <tr><td><span class="score-badge score-1">1 分</span></td><td>「测试通过就合并」——缺乏对 AI 产出的审慎态度；或反过来完全不信任、要求自己重写——无法高效协作</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<hr class="page-break-hint">
+
+<!-- ── SECTION 5: Builder 题库 ── -->
+<div class="section" id="builder">
+  <div class="section-header">
+    <div class="section-icon icon-teal">05</div>
+    <div class="section-title">Builder 专项题库
+      <small>产品直觉强、能跨角色作战、以产出为导向的候选人</small>
+    </div>
+  </div>
+
+  <div class="info-box info-teal">
+    <div class="ib-icon">*</div>
+    <div class="ib-content">
+      <div class="ib-title">考察目标</div>
+      <p>确认他能「一个人驱动一条线」——从发现问题，到写 Issue，到出原型，到推动落地，不需要等待授权或他人决策。</p>
+    </div>
+  </div>
+
+  <h2>模块 C · 产品直觉</h2>
+
+  <h3>初阶候选人</h3>
+  <div class="q-card">
+    <div class="q-header teal">
+      <span class="q-num">Q5</span>
+      <span class="q-title">（展示产品截图）你有30秒，告诉我这个页面最大的问题是什么。</span>
+      <span class="q-level">初阶</span>
+    </div>
+    <div class="q-hint"><strong>考察重点：</strong>第一反应是否准确；能否快速抓住核心问题而非列举细节；速度本身也是考察维度</div>
+    <div class="q-scoring">
+      <table class="score-table">
+        <thead><tr><th style="width:80px">评分</th><th>标准</th></tr></thead>
+        <tbody>
+          <tr><td><span class="score-badge score-5">5 分</span></td><td>30秒内指出核心体验问题，能说出「为什么这是最大问题」而不只是描述问题</td></tr>
+          <tr><td><span class="score-badge score-3">3 分</span></td><td>指出了问题，但是次要问题，或需要超过30秒思考</td></tr>
+          <tr><td><span class="score-badge score-1">1 分</span></td><td>列举一堆细节，抓不住重点；或完全没有意见，需要引导</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3>高阶候选人</h3>
+  <div class="q-card">
+    <div class="q-header blue">
+      <span class="q-num">Q6</span>
+      <span class="q-title">你发现了一个用户痛点，但这个需求 PM 没有提过。你会怎么推进它？</span>
+      <span class="q-level">高阶</span>
+    </div>
+    <div class="q-hint"><strong>考察重点：</strong>主动性；跨角色意识；能否在无授权情况下推动事情发生，而不是等待</div>
+    <div class="q-scoring">
+      <table class="score-table">
+        <thead><tr><th style="width:80px">评分</th><th>标准</th></tr></thead>
+        <tbody>
+          <tr><td><span class="score-badge score-5">5 分</span></td><td>有清晰推进路径：先验证（原型/数据）→ 对齐优先级 → 写 Issue 驱动落地，不等授权</td></tr>
+          <tr><td><span class="score-badge score-3">3 分</span></td><td>愿意推进，但路径模糊或依赖他人决策</td></tr>
+          <tr><td><span class="score-badge score-1">1 分</span></td><td>「这不是我的职责」或「要等 PM 决定」——执行思维，无法在 AI 时代创造价值</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2>模块 D · 原型驱动能力（实操）</h2>
+
+  <h3>初阶候选人</h3>
+  <div class="q-card">
+    <div class="q-header teal">
+      <span class="q-num">Q7</span>
+      <span class="q-title">需求方向：「用户想快速找到自己上次没看完的内容」。请用15分钟，用任何工具（含 AI）出一个可以给人看的原型，不要文字描述。</span>
+      <span class="q-level">初阶</span>
+    </div>
+    <div class="q-hint"><strong>考察重点：</strong>能否将模糊需求快速转化为可视化产出；工具运用效率；是否能在约束下做取舍</div>
+    <div class="q-scoring">
+      <table class="score-table">
+        <thead><tr><th style="width:80px">评分</th><th>标准</th></tr></thead>
+        <tbody>
+          <tr><td><span class="score-badge score-5">5 分</span></td><td>15分钟内有可交互原型，核心流程完整，设计决策能说清楚理由</td></tr>
+          <tr><td><span class="score-badge score-3">3 分</span></td><td>有静态设计稿或清晰线框图，能表达核心交互逻辑</td></tr>
+          <tr><td><span class="score-badge score-1">1 分</span></td><td>15分钟后只有文字描述，没有任何可视化产出</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3>高阶候选人</h3>
+  <div class="q-card">
+    <div class="q-header blue">
+      <span class="q-num">Q8</span>
+      <span class="q-title">你的原型出来了，设计师说「不好看」，PM 说「方向不对」。你怎么判断该改哪个？</span>
+      <span class="q-level">高阶</span>
+    </div>
+    <div class="q-hint"><strong>考察重点：</strong>在冲突意见中的决策能力；能否区分「审美问题」和「方向问题」；优先级判断</div>
+    <div class="q-scoring">
+      <table class="score-table">
+        <thead><tr><th style="width:80px">评分</th><th>标准</th></tr></thead>
+        <tbody>
+          <tr><td><span class="score-badge score-5">5 分</span></td><td>能快速区分两种反馈的性质，先解决「方向」再解决「好看」，能说出验证方向正确性的具体方法</td></tr>
+          <tr><td><span class="score-badge score-3">3 分</span></td><td>倾向于先满足其中一方，但缺乏系统性判断框架</td></tr>
+          <tr><td><span class="score-badge score-1">1 分</span></td><td>两者都想满足，或陷入纠结无法决策，需要他人来决定</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<hr class="page-break-hint">
+
+<!-- ── SECTION 6: Reviewer 题库 ── -->
+<div class="section" id="reviewer">
+  <div class="section-header">
+    <div class="section-icon icon-blue">06</div>
+    <div class="section-title">Reviewer 专项题库
+      <small>系统思维强、技术判断快、能在高速 AI 输出中把控质量的候选人</small>
+    </div>
+  </div>
+
+  <div class="info-box info-blue">
+    <div class="ib-icon">*</div>
+    <div class="ib-content">
+      <div class="ib-title">考察目标</div>
+      <p>确认他能「守住最后一道防线」——在 AI 高速输出代码的情况下，快速、准确地识别问题，并给出可执行的修改指令。</p>
+    </div>
+  </div>
+
+  <h2>模块 E · PR Review 速度与深度</h2>
+
+  <h3>初阶候选人</h3>
+  <div class="q-card">
+    <div class="q-header blue">
+      <span class="q-num">Q9</span>
+      <span class="q-title">（给一段 AI 提交的代码变更，约50–80行）请你在8分钟内完成 Review，给出：通过 / 驳回 / 需修改，以及具体理由。</span>
+      <span class="q-level">初阶</span>
+    </div>
+    <div class="q-hint"><strong>考察重点：</strong>速度与准确性的平衡；是否能给出 AI 可以直接执行的反馈，而非模糊评论</div>
+    <div class="q-scoring">
+      <table class="score-table">
+        <thead><tr><th style="width:100px">评分维度</th><th style="width:60px">满分</th><th>考察点</th></tr></thead>
+        <tbody>
+          <tr><td>速度</td><td>3 分</td><td>8分钟内完成，不拖延</td></tr>
+          <tr><td>问题识别</td><td>4 分</td><td>发现 bug / 安全漏洞 / 性能问题 / 边界条件</td></tr>
+          <tr><td>反馈质量</td><td>3 分</td><td>给的是 AI 能直接执行的指令，而非「感觉不好」</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sample-tag">Q9 面试官备用素材 — 展示给候选人 Review 的代码变更</div>
+  <div class="sample-block"><span class="hl">PR #142: 新增用户数据导出接口</span>
+<span class="cm">// 变更文件: api/export.js (+58行)</span>
+
+<span class="kw">const</span> router = require('express').Router();
+<span class="kw">const</span> db = require('../models');
+
+<span class="cm">// 导出用户列表</span>
+router.get('/api/users/export', <span class="kw">async</span> (req, res) => {
+  <span class="kw">const</span> format = req.query.format || 'csv';
+  <span class="kw">const</span> department = req.query.dept;
+
+  <span class="kw">let</span> query = 'SELECT * FROM users';
+  <span class="kw">if</span> (department) {
+    query += <span class="err">` WHERE department = '${department}'`</span>;
+  }
+
+  <span class="kw">const</span> users = <span class="kw">await</span> db.raw(query);
+
+  <span class="kw">if</span> (format === 'csv') {
+    <span class="kw">let</span> csv = 'id,name,email,<span class="err">phone,address,salary</span>,created_at\n';
+    <span class="kw">for</span> (<span class="kw">const</span> u of users) {
+      csv += `${u.id},${u.name},${u.email},${u.phone},${u.address},${u.salary},${u.created_at}\n`;
+    }
+    res.setHeader('Content-Type', 'text/csv');
+    res.setHeader('Content-Disposition', 'attachment; filename=users.csv');
+    res.send(csv);
+  } <span class="kw">else if</span> (format === 'json') {
+    res.json({ data: users, count: users.length });
+  }
+});
+
+<span class="cm">// 导出单个用户详情</span>
+router.get('/api/users/:id/export', <span class="kw">async</span> (req, res) => {
+  <span class="kw">const</span> user = <span class="kw">await</span> db.raw(
+    <span class="err">`SELECT * FROM users WHERE id = ${req.params.id}`</span>
+  );
+
+  <span class="kw">if</span> (!user.length) {
+    <span class="kw">return</span> res.status(404).json({ error: '用户不存在' });
+  }
+
+  <span class="kw">const</span> orders = <span class="kw">await</span> db.raw(
+    <span class="err">`SELECT * FROM orders WHERE user_id = ${req.params.id}`</span>
+  );
+
+  res.json({
+    user: user[0],
+    orders: orders,
+    exported_at: <span class="kw">new</span> Date().toISOString()
+  });
+});
+
+module.exports = router;
+
+<span class="cm">// 候选人应该发现的问题（面试官参考，不要展示）:</span>
+<span class="cm">// [严重] SQL 注入: department 和 id 直接拼接进 SQL</span>
+<span class="cm">// [严重] 无权限校验: 任何人都能导出全部用户数据</span>
+<span class="cm">// [严重] 数据泄露: SELECT * 导出了 salary、address、phone 等敏感字段</span>
+<span class="cm">// [中等] 内存风险: 一次性加载所有用户，大数据量会 OOM</span>
+<span class="cm">// [中等] CSV 注入: 用户可控字段直接写入 CSV，可构造公式注入</span>
+<span class="cm">// [低等] 无错误处理: 没有 try/catch，异常会导致进程崩溃</span>
+<span class="cm">// [低等] format 无兜底: 既不是 csv 也不是 json 时，连接会挂起</span></div>
+
+  <h3>高阶候选人</h3>
+  <div class="q-card">
+    <div class="q-header purple">
+      <span class="q-num">Q10</span>
+      <span class="q-title">你 Review 了 Claude Code 的 PR 十次，发现它总是在同一类地方犯错（例如总是遗漏错误处理）。你会怎么系统性地解决这个问题？</span>
+      <span class="q-level">高阶</span>
+    </div>
+    <div class="q-hint"><strong>考察重点：</strong>从单次修复上升到流程优化的意识；能否影响 AI 的输出质量而不是一遍遍修同样的错</div>
+    <div class="q-scoring">
+      <table class="score-table">
+        <thead><tr><th style="width:80px">评分</th><th>标准</th></tr></thead>
+        <tbody>
+          <tr><td><span class="score-badge score-5">5 分</span></td><td>能提出系统性方案：改写 Issue 模板 / 建立 Review Checklist / 调整 prompt 范式，并说出验证效果的方法</td></tr>
+          <tr><td><span class="score-badge score-3">3 分</span></td><td>意识到是系统问题，但解决方案仍是「下次提醒它」</td></tr>
+          <tr><td><span class="score-badge score-1">1 分</span></td><td>每次都单独修改，没有意识到这是可以系统性优化的问题</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h2>模块 F · 系统思维 & 决策</h2>
+
+  <h3>初阶候选人</h3>
+  <div class="q-card">
+    <div class="q-header blue">
+      <span class="q-num">Q11</span>
+      <span class="q-title">我们想做「用户可以导出订单历史报告」这个功能。先不要想技术实现，告诉我：这个功能真正要解决的问题是什么？什么情况下我们不该做它？</span>
+      <span class="q-level">初阶</span>
+    </div>
+    <div class="q-hint"><strong>考察重点：</strong>能否在动手前先想清楚「该不该建」；是否有产品层面的判断力，而不只是执行</div>
+    <div class="q-scoring">
+      <table class="score-table">
+        <thead><tr><th style="width:80px">评分</th><th>标准</th></tr></thead>
+        <tbody>
+          <tr><td><span class="score-badge score-5">5 分</span></td><td>拆解出真实用户需求（不只是字面功能），列举不做的合理场景（使用率低 / 维护成本高 / 有替代方案）</td></tr>
+          <tr><td><span class="score-badge score-3">3 分</span></td><td>能质疑需求，但分析不完整，或只能说出一个维度</td></tr>
+          <tr><td><span class="score-badge score-1">1 分</span></td><td>直接讨论技术实现，完全跳过必要性判断</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3>高阶候选人</h3>
+  <div class="q-card">
+    <div class="q-header purple">
+      <span class="q-num">Q12</span>
+      <span class="q-title">一个功能，Claude Code 给了两个方案：方案 A 更快上线，方案 B 更易维护。Deadline 是下周。你怎么决策？你需要哪些信息？</span>
+      <span class="q-level">高阶</span>
+    </div>
+    <div class="q-hint"><strong>考察重点：</strong>压力下的判断力；能否快速识别决策所需信息；是否能在假设条件下给出清晰方向，不逃避</div>
+    <div class="q-scoring">
+      <table class="score-table">
+        <thead><tr><th style="width:80px">评分</th><th>标准</th></tr></thead>
+        <tbody>
+          <tr><td><span class="score-badge score-5">5 分</span></td><td>明确列出需要的信息（Deadline 硬性？技术债严重程度？后续资源？），然后在假设条件下给出清晰决策</td></tr>
+          <tr><td><span class="score-badge score-3">3 分</span></td><td>会寻求更多信息，但决策框架不清晰，给不出方向</td></tr>
+          <tr><td><span class="score-badge score-1">1 分</span></td><td>「看情况」「两个都好」，无法在压力下给出方向，逃避决策</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<hr class="page-break-hint">
+
+<!-- ── SECTION 7: 否决 & 权重 ── -->
+<div class="section" id="veto">
+  <div class="section-header">
+    <div class="section-icon icon-red">07</div>
+    <div class="section-title">一票否决项 & 评分权重
+      <small>任何一条否决项触发，无论其他表现多好，直接淘汰</small>
+    </div>
+  </div>
+
+  <div class="veto-list">
+    <div class="veto-item">
+      <div class="veto-x">✕</div>
+      <div class="veto-text">
+        <strong>不能接受 AI 比自己写得好</strong>
+        测试方法：问「Claude Code 的代码和你写的，哪个更好？」——防御性强、回避比较，说明心态有问题，无法在这套流程里高效工作。
+      </div>
+    </div>
+    <div class="veto-item">
+      <div class="veto-x">✕</div>
+      <div class="veto-text">
+        <strong>Issues 写得像工单，没有上下文</strong>
+        这是我们流程的致命伤。一个只会写「修复搜索 bug」的人，会让 AI 反复 askuser，拖慢所有人。
+      </div>
+    </div>
+    <div class="veto-item">
+      <div class="veto-x">✕</div>
+      <div class="veto-text">
+        <strong>Review 时只说「感觉不对」，说不出具体问题</strong>
+        Reviewer 岗位直接淘汰。无法给出可执行反馈的 Reviewer，比没有 Reviewer 更危险。
+      </div>
+    </div>
+    <div class="veto-item">
+      <div class="veto-x">✕</div>
+      <div class="veto-text">
+        <strong>只关注技术实现，从不问「为什么要做这个」</strong>
+        系统思维缺失的信号。在 AI 时代，执行不是稀缺的，判断力才是。
+      </div>
+    </div>
+    <div class="veto-item">
+      <div class="veto-x">✕</div>
+      <div class="veto-text">
+        <strong>沟通需要多轮才能说清一件事</strong>
+        沟通成本是最大拖慢因素。这类候选人不仅拖慢 AI，也拖慢团队里每一个人。
+      </div>
+    </div>
+    <div class="veto-item">
+      <div class="veto-x">✕</div>
+      <div class="veto-text">
+        <strong>面试结束时没有提出任何有质量的问题</strong>
+        只问薪资、假期的候选人，说明他对工作本身没有好奇心。只问自己的利益，不关心团队的问题。
+      </div>
+    </div>
+  </div>
+
+  <h2 style="margin-top:28px">综合评分权重</h2>
+
+  <div class="info-box info-blue" style="margin-bottom:16px">
+    <div class="ib-icon">#</div>
+    <div class="ib-content">
+      <div class="ib-title">录用线</div>
+      <p>每人考 5 个模块（3 通用 + 2 专项），每模块 10 分，总分 50 分。35 分及以上（≥ 70%）且无否决项，进入录用讨论。30–34 分列为备选。低于 30 分直接淘汰。</p>
+    </div>
+  </div>
+
+  <table class="weight-table">
+    <thead>
+      <tr>
+        <th>考察模块</th>
+        <th class="th-builder">Builder 权重</th>
+        <th class="th-reviewer">Reviewer 权重</th>
+        <th class="th-score">满分</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>A. Issues 写作质量 <span class="sr-label">通用</span></td>
+        <td>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar"><div class="pct-fill-builder" style="width:20%"></div></div>
+            <span class="pct-label">20%</span>
+          </div>
+        </td>
+        <td>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar"><div class="pct-fill-reviewer" style="width:15%"></div></div>
+            <span class="pct-label">15%</span>
+          </div>
+        </td>
+        <td style="font-family:var(--mono);font-weight:700;color:var(--primary)">10</td>
+      </tr>
+      <tr>
+        <td>B. 方案 Review 能力 <span class="sr-label">通用</span></td>
+        <td>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar"><div class="pct-fill-builder" style="width:10%"></div></div>
+            <span class="pct-label">10%</span>
+          </div>
+        </td>
+        <td>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar"><div class="pct-fill-reviewer" style="width:20%"></div></div>
+            <span class="pct-label">20%</span>
+          </div>
+        </td>
+        <td style="font-family:var(--mono);font-weight:700;color:var(--primary)">10</td>
+      </tr>
+      <tr>
+        <td>G. AI 驾驶能力 <span class="sr-label">通用</span></td>
+        <td>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar"><div class="pct-fill-builder" style="width:25%"></div></div>
+            <span class="pct-label">25%</span>
+          </div>
+        </td>
+        <td>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar"><div class="pct-fill-reviewer" style="width:25%"></div></div>
+            <span class="pct-label">25%</span>
+          </div>
+        </td>
+        <td style="font-family:var(--mono);font-weight:700;color:var(--primary)">10</td>
+      </tr>
+      <tr>
+        <td>C. 产品直觉 <span class="sr-label">Builder</span></td>
+        <td>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar"><div class="pct-fill-builder" style="width:25%"></div></div>
+            <span class="pct-label">25%</span>
+          </div>
+        </td>
+        <td style="color:var(--ink-muted);text-align:center">—</td>
+        <td style="font-family:var(--mono);font-weight:700;color:var(--primary)">10</td>
+      </tr>
+      <tr>
+        <td>D. 原型驱动能力 <span class="sr-label">Builder</span></td>
+        <td>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar"><div class="pct-fill-builder" style="width:20%"></div></div>
+            <span class="pct-label">20%</span>
+          </div>
+        </td>
+        <td style="color:var(--ink-muted);text-align:center">—</td>
+        <td style="font-family:var(--mono);font-weight:700;color:var(--primary)">10</td>
+      </tr>
+      <tr>
+        <td>E. PR Review 能力 <span class="sr-label">Reviewer</span></td>
+        <td style="color:var(--ink-muted);text-align:center">—</td>
+        <td>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar"><div class="pct-fill-reviewer" style="width:20%"></div></div>
+            <span class="pct-label">20%</span>
+          </div>
+        </td>
+        <td style="font-family:var(--mono);font-weight:700;color:var(--primary)">10</td>
+      </tr>
+      <tr>
+        <td>F. 系统思维 & 决策 <span class="sr-label">Reviewer</span></td>
+        <td style="color:var(--ink-muted);text-align:center">—</td>
+        <td>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar"><div class="pct-fill-reviewer" style="width:20%"></div></div>
+            <span class="pct-label">20%</span>
+          </div>
+        </td>
+        <td style="font-family:var(--mono);font-weight:700;color:var(--primary)">10</td>
+      </tr>
+      <tr>
+        <td><strong>合计（每人考 5 项）</strong></td>
+        <td><strong>100%</strong></td>
+        <td><strong>100%</strong></td>
+        <td style="font-family:var(--mono);font-weight:900;color:var(--ink);font-size:16px">50</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="verdict-grid" style="margin-top:20px">
+    <div class="verdict-card verdict-pass">
+      <div class="v-icon">PASS</div>
+      <div class="v-title">录用</div>
+      <div class="v-sub">≥ 35/50 且无否决项</div>
+    </div>
+    <div class="verdict-card verdict-hold">
+      <div class="v-icon">HOLD</div>
+      <div class="v-title">备选</div>
+      <div class="v-sub">30–34/50 且无否决项</div>
+    </div>
+    <div class="verdict-card verdict-fail">
+      <div class="v-icon">FAIL</div>
+      <div class="v-title">淘汰</div>
+      <div class="v-sub">&lt; 30/50 或触发否决项</div>
+    </div>
+  </div>
+</div>
+
+<hr class="page-break-hint">
+
+<!-- ── SECTION 8: 评分记录表 ── -->
+<div class="section" id="scoresheet">
+  <div class="section-header">
+    <div class="section-icon icon-blue">08</div>
+    <div class="section-title">面试评分记录表
+      <small>每场面试使用一份，面试结束后30分钟内填写并提交</small>
+    </div>
+  </div>
+
+  <div class="score-form">
+    <div class="form-header">
+      <div class="form-field">
+        <label>候选人姓名</label>
+        <input type="text" placeholder="请输入姓名">
+      </div>
+      <div class="form-field">
+        <label>面试日期</label>
+        <input type="date">
+      </div>
+      <div class="form-field">
+        <label>应聘方向</label>
+        <select>
+          <option value="">请选择</option>
+          <option>Builder 型</option>
+          <option>Reviewer 型</option>
+          <option>待定</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>面试官</label>
+        <input type="text" placeholder="请输入姓名">
+      </div>
+    </div>
+
+    <div class="score-rows">
+      <div class="score-row header-row">
+        <div class="sr-module">考察模块</div>
+        <div class="sr-max" style="text-align:center">满分</div>
+        <div class="sr-score">实得分</div>
+        <div class="sr-notes">关键观察</div>
+      </div>
+      <div class="score-row">
+        <div class="sr-module">A. Issues 写作质量（Q1/Q2）<span class="sr-label">通用</span></div>
+        <div class="sr-max">10</div>
+        <div class="sr-score"><input type="number" min="0" max="10" placeholder="—" oninput="calcTotal()"></div>
+        <div class="sr-notes"><input type="text" placeholder="记录关键观察…"></div>
+      </div>
+      <div class="score-row">
+        <div class="sr-module">B. 方案 Review 能力（Q3/Q4）<span class="sr-label">通用</span></div>
+        <div class="sr-max">10</div>
+        <div class="sr-score"><input type="number" min="0" max="10" placeholder="—" oninput="calcTotal()"></div>
+        <div class="sr-notes"><input type="text" placeholder="记录关键观察…"></div>
+      </div>
+      <div class="score-row">
+        <div class="sr-module">G. AI 驾驶能力（Q13/Q14）<span class="sr-label">通用</span></div>
+        <div class="sr-max">10</div>
+        <div class="sr-score"><input type="number" min="0" max="10" placeholder="—" oninput="calcTotal()"></div>
+        <div class="sr-notes"><input type="text" placeholder="记录关键观察…"></div>
+      </div>
+      <div class="score-row">
+        <div class="sr-module">C. 产品直觉（Q5/Q6）<span class="sr-label">Builder</span></div>
+        <div class="sr-max">10</div>
+        <div class="sr-score"><input type="number" min="0" max="10" placeholder="—" oninput="calcTotal()"></div>
+        <div class="sr-notes"><input type="text" placeholder="Builder 填写，Reviewer 留空"></div>
+      </div>
+      <div class="score-row">
+        <div class="sr-module">D. 原型驱动能力（Q7/Q8）<span class="sr-label">Builder</span></div>
+        <div class="sr-max">10</div>
+        <div class="sr-score"><input type="number" min="0" max="10" placeholder="—" oninput="calcTotal()"></div>
+        <div class="sr-notes"><input type="text" placeholder="Builder 填写，Reviewer 留空"></div>
+      </div>
+      <div class="score-row">
+        <div class="sr-module">E. PR Review 能力（Q9/Q10）<span class="sr-label">Reviewer</span></div>
+        <div class="sr-max">10</div>
+        <div class="sr-score"><input type="number" min="0" max="10" placeholder="—" oninput="calcTotal()"></div>
+        <div class="sr-notes"><input type="text" placeholder="Reviewer 填写，Builder 留空"></div>
+      </div>
+      <div class="score-row">
+        <div class="sr-module">F. 系统思维 & 决策（Q11/Q12）<span class="sr-label">Reviewer</span></div>
+        <div class="sr-max">10</div>
+        <div class="sr-score"><input type="number" min="0" max="10" placeholder="—" oninput="calcTotal()"></div>
+        <div class="sr-notes"><input type="text" placeholder="Reviewer 填写，Builder 留空"></div>
+      </div>
+    </div>
+
+    <div class="total-display">
+      <div>
+        <div class="total-label">综合总分（填 5 项，满分 50）</div>
+        <div style="font-size:11px;color:#A89B8C;margin-top:2px">录用线：≥ 35 分（70%）且无否决项</div>
+      </div>
+      <div class="total-score" id="totalScore">— <span>/ 50</span></div>
+    </div>
+  </div>
+
+  <h2 style="margin-top:24px">一票否决项检查</h2>
+  <div class="info-box info-red">
+    <div class="ib-icon">!</div>
+    <div class="ib-content">
+      <p>逐项勾选代表「已触发」。任何一项触发，无论总分多高，直接淘汰。</p>
+    </div>
+  </div>
+
+  <div class="veto-checks">
+    <div class="veto-check">
+      <input type="checkbox" id="v1">
+      <label for="v1">不能接受 AI 比自己写得好（防御性强，回避比较）</label>
+      <span class="veto-triggered">→ 淘汰</span>
+    </div>
+    <div class="veto-check">
+      <input type="checkbox" id="v2">
+      <label for="v2">Issues 写得像工单，缺乏上下文、约束和预期结果</label>
+      <span class="veto-triggered">→ 淘汰</span>
+    </div>
+    <div class="veto-check">
+      <input type="checkbox" id="v3">
+      <label for="v3">Review 时只说「感觉不对」，完全说不出具体问题</label>
+      <span class="veto-triggered">→ 淘汰</span>
+    </div>
+    <div class="veto-check">
+      <input type="checkbox" id="v4">
+      <label for="v4">只关注技术实现，从不问「为什么要做这个」</label>
+      <span class="veto-triggered">→ 淘汰</span>
+    </div>
+    <div class="veto-check">
+      <input type="checkbox" id="v5">
+      <label for="v5">沟通需要多轮才能说清一件事</label>
+      <span class="veto-triggered">→ 淘汰</span>
+    </div>
+    <div class="veto-check">
+      <input type="checkbox" id="v6">
+      <label for="v6">面试结束时没有提出任何有质量的问题</label>
+      <span class="veto-triggered">→ 淘汰</span>
+    </div>
+  </div>
+
+  <div class="conclusion-area">
+    <div class="conclusion-header">最终结论</div>
+    <div class="conclusion-body">
+      <div class="radio-group">
+        <label class="radio-option pass">
+          <input type="radio" name="verdict" value="pass">
+          <span>&#10003; 录用</span>
+        </label>
+        <label class="radio-option hold">
+          <input type="radio" name="verdict" value="hold">
+          <span>|| 备选</span>
+        </label>
+        <label class="radio-option fail">
+          <input type="radio" name="verdict" value="fail">
+          <span>&#10005; 淘汰</span>
+        </label>
+      </div>
+      <div class="reason-field">
+        <label>核心理由（必填，需有具体依据）</label>
+        <textarea placeholder="例如：候选人 Q7 在12分钟内完成了可交互原型，产品直觉判断准确（Q5 得5分），但 Issues 质量偏弱（Q1 得3分），缺乏边界条件描述。建议录用 Builder 岗，同时在入职初期重点培训 Issues 写作规范。"></textarea>
+      </div>
+      <div class="reason-field">
+        <label>候选人在面试结束时问的问题（记录原话）</label>
+        <textarea placeholder="直接记录候选人的原话…" style="min-height:50px"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <h2 style="margin-top:24px">面试官提交前 Checklist</h2>
+  <div class="checklist">
+    <div class="check-item">
+      <input type="checkbox" id="c1"><label for="c1">已确认候选人类型（Builder / Reviewer），并对应使用了正确的题组</label>
+    </div>
+    <div class="check-item">
+      <input type="checkbox" id="c2"><label for="c2">已对照一票否决项逐条检查，结果已如实记录</label>
+    </div>
+    <div class="check-item">
+      <input type="checkbox" id="c3"><label for="c3">评分表已填写，每项都有具体依据，非主观印象</label>
+    </div>
+    <div class="check-item">
+      <input type="checkbox" id="c4"><label for="c4">已记录候选人在面试结束时问了什么问题</label>
+    </div>
+    <div class="check-item">
+      <input type="checkbox" id="c5"><label for="c5">如果录用：已确认他能立刻驾驶 AI agent 进入我们的工作流</label>
+    </div>
+    <div class="check-item">
+      <input type="checkbox" id="c6"><label for="c6">如果淘汰：有具体理由，可以向候选人说明（非主观感受）</label>
+    </div>
+  </div>
+
+  <div style="margin-top:20px;text-align:center" class="no-print">
+    <button class="print-btn" onclick="window.print()">打印 / 保存为 PDF</button>
+  </div>
+</div>
+
+</main>
+
+<footer style="text-align:center;padding:24px 32px 40px;font-size:11px;font-family:var(--mono);color:var(--border);letter-spacing:0.03em">
+  易哈佛医疗 · <a href="https://www.ehafo.com" target="_blank" rel="noopener" style="color:var(--border);text-decoration:none;border-bottom:1px solid var(--border)">ehafo.com</a>
+</footer>
+
+<script>
+function calcTotal() {
+  const inputs = document.querySelectorAll('.sr-score input[type="number"]');
+  let total = 0;
+  let filled = 0;
+  inputs.forEach(inp => {
+    const v = parseFloat(inp.value);
+    if (!isNaN(v)) {
+      total += v;
+      filled++;
+    }
+  });
+  const el = document.getElementById('totalScore');
+  if (filled === 0) {
+    el.innerHTML = '— <span>/ 50</span>';
+    el.style.color = '#D4A44C';
+  } else {
+    const pct = Math.round((total / 50) * 100);
+    const color = pct >= 70 ? '#5A7F5C' : pct >= 60 ? '#B8862D' : '#A63D3D';
+    el.innerHTML = `${total} <span>/ 50 (${pct}%)</span>`;
+    el.style.color = color;
+  }
+}
+</script>
+
+</body>
+</html>
